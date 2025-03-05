@@ -68,15 +68,15 @@ public class PyramidRubik {
     }
     
     private void initializeEdges() {
-        for (int i = 0; i < faces.length; i++) {  // Loop thru each face
-            for (int j = 0; j < 3; j++) { // Loop thru 3 edges in each face
-                int adjacentFace = adjacentFaces[i][j]; // Get adjacent face
-                int edgeTile = edgeIndices[i][j]; // Get edge index of current face
-                int adjacentEdgeTile = edgeIndices[adjacentFace][j]; // Get the matching tile index of adjacent face
+        for (int face = 0; face < faces.length; face++) {  // Loop thru each face
+            for (int edge = 0; edge < 3; edge++) { // Loop thru 3 edges in each face
+                int adjacentFace = adjacentFaces[face][edge]; // Get adjacent face
+                int edgeTile = edgeIndices[face][edge]; // Get edge index of current face
+                int adjacentEdge = edgeIndices[adjacentFace][edge]; // Get the matching tile index of adjacent face
 
                 
-                Color sharedColor = faces[i].getTiles()[edgeTile];
-                faces[adjacentFace].setTile(adjacentEdgeTile, sharedColor); // Set edge tiles to the same color
+                Color sharedColor = faces[face].getTiles()[edgeTile];
+                faces[adjacentFace].setTile(adjacentEdge, sharedColor); // Set edge tiles to the same color
             }
         }
     }
